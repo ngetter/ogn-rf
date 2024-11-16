@@ -56,6 +56,11 @@ class FreqPlan
      if( Latitude<(20*600000) )                                            // below 20deg latitude
      { if( ( Longitude>(164*600000)) && (Latitude<(-30*600000)) && (Latitude>(-48*600000)) ) return 4;  // => New Zeeland
        return 3; }                                                         // => Australia + South America: upper half of 915MHz band
+    // Israel-specific region
+    if( (Latitude>=(29*600000)) && (Latitude<=(33*600000)) && 
+    (Longitude>=(34*600000)) && (Longitude<=(36*600000)) ) 
+    return 5;
+
      return 2; }                                                           // => USA/Canada: full 915MHz band
 
   private:
