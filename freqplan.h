@@ -28,7 +28,7 @@ class FreqPlan
 
    static const char *getPlanName(uint8_t Plan)
    { static const char *Name[6] = { "Default", "Europe/Africa", "USA/Canada", "Australia/South America", "New Zeeland", "Israel" } ;
-     if(Plan>4) return 0;
+     if(Plan>5) return 0;
      return Name[Plan]; }
 
    uint8_t getChannel  (uint32_t Time, uint8_t Slot=0, uint8_t OGN=1) const // OGN-tracker or FLARM, UTC time, slot: 0 or 1
@@ -56,8 +56,7 @@ class FreqPlan
      if( Latitude<(20*600000) )                                            // below 20deg latitude
      { if( ( Longitude>(164*600000)) && (Latitude<(-30*600000)) && (Latitude>(-48*600000)) ) return 4;  // => New Zeeland
        return 3; }                                                         // => Australia + South America: upper half of 915MHz band
-    // Israel-specific region
-    if( (Latitude>=(29*600000)) && (Latitude<=(33*600000)) && 
+    if( (Latitude>=(29*600000)) && (Latitude<=(33*600000)) &&              // Israel-specific region
     (Longitude>=(34*600000)) && (Longitude<=(36*600000)) ) 
     return 5;
 
